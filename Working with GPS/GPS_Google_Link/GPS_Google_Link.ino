@@ -1,7 +1,7 @@
-
-#include <LiquidCrystal.h>                // include the library code:
-
-LiquidCrystal lcd(11,12,14,15,16,17);  // initialize the library with the numbers of the interface pins
+// include the library code:
+#include <LiquidCrystal.h>
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(11,12,14,15,16,17);  
 
 char PhoneNo[]="+918976260275";
 int sendStatus=0;
@@ -21,25 +21,32 @@ int cnt=0;
 
 void setup() 
 {
-    pinMode(8,OUTPUT);                    //Set pin number 4 as digital out where relay 1 is connected
- 
-    pinMode(13,OUTPUT);                   //SIM808 wakeup connected on pin 13 in IomaTic board
-    digitalWrite(13, HIGH);               //Initialize the SIM808 Module 
+    //Set pin number 4 as digital out where relay 1 is connected
+    pinMode(8,OUTPUT);                    
+    //SIM808 wakeup connected on pin 13 in IomaTic board
+    pinMode(13,OUTPUT);                   
+    //Initialize the SIM808 Module
+    digitalWrite(13, HIGH);                
     delay(1000);
-    digitalWrite(13, LOW);                //Sending wake up signal to SIM808 Module
+    //Sending wake up signal to SIM808 Module
+    digitalWrite(13, LOW);                
     delay(1000);
-    digitalWrite(13, HIGH);               //Keeping SIM808 in active/wakeup state
+    //Keeping SIM808 in active/wakeup state
+    digitalWrite(13, HIGH);               
     delay(1000);
-  
-    lcd.begin(16, 2);                     //Initialize the LCD in 16x2 mode
+    //Initialize the LCD in 16x2 mode
+    lcd.begin(16, 2);                     
     delay(1000);            
-    lcd.setCursor(0,0);                   //Set cursor at first character/coloumn of first line/row
-    lcd.print("     IomaTic        ");    //Print the message as metioned cursor location
-
-    lcd.setCursor(0,1);                   //Set cursor at first character/coloumn of first line/row
-    lcd.print("Dial to Track........");       //Print the message as metioned cursor location
-
-    Serial.begin(9600);                   //Initialize a serial communication with baud rate 9600
+    //Set cursor at first character/coloumn of first line/row
+    lcd.setCursor(0,0);                   
+    //Print the message as metioned cursor location
+    lcd.print("     IomaTic        ");    
+    //Set cursor at first character/coloumn of first line/row
+    lcd.setCursor(0,1);                   
+    //Print the message as metioned cursor location
+    lcd.print("Dial to Track........");       
+    //Initialize a serial communication with baud rate 9600
+    Serial.begin(9600);                   
     delay(1000);
 
     Serial.print("AT+CGNSPWR=1\r\n");
@@ -54,46 +61,62 @@ void setup()
 
 void loop() 
 { 
-    
-    Serial.println("AT+CPAS");            //Phone activity status: 0= ready, 2= unknown, 3= ringing, 4= in call
+    //Phone activity status: 0= ready, 2= unknown, 3= ringing, 4= in call
+    Serial.println("AT+CPAS");            
     delay(100);
-    if (Serial.find("+CPAS: "))           //Decode reply
+    //Decode reply
+    if (Serial.find("+CPAS: "))           
     { 
-      char c = Serial.read();             // gives ascii code for status number
-      current_status = c - 48;            // return integer value of ascii code
+      // gives ascii code for status number
+      char c = Serial.read();             
+      // return integer value of ascii code
+      current_status = c - 48;            
 
      if (current_status == 0) 
       {
-       lcd.setCursor(0,1);                   //Set cursor at first character/coloumn of first line/row
-       lcd.print("Waiting For Call...");     //Print the message as metioned cursor location
+       //Set cursor at first character/coloumn of first line/row
+       lcd.setCursor(0,1);                   
+       //Print the message as metioned cursor location
+       lcd.print("Waiting For Call...");     
     }
 
       if (current_status == 3) 
       {
-        lcd.setCursor(0,1);                   //Set cursor at first character/coloumn of first line/row
-        lcd.print("Ringing............");     //Print the message as metioned cursor location
+        //Set cursor at first character/coloumn of first line/row
+        lcd.setCursor(0,1);                   
+        //Print the message as metioned cursor location
+        lcd.print("Ringing............");     
         delay(4000);
-        
-        Serial.println("ATH");                 //Automatically answer call after 1 ring
+        //Automatically answer call after 1 ring
+        Serial.println("ATH");                 
         delay(300);
-
-        lcd.setCursor(0,1);                   //Set cursor at first character/coloumn of first line/row
-        lcd.print("Getting Location....");        //Print the message as metioned cursor location
+        //Set cursor at first character/coloumn of first line/row
+        lcd.setCursor(0,1);                   
+        //Print the message as metioned cursor location
+        lcd.print("Getting Location....");        
 
         GetLocation();        
 
-        lcd.setCursor(0,1);                   //Set cursor at first character/coloumn of first line/row
-        lcd.print("Triggering SMS....");        //Print the message as metioned cursor location
-
-        Serial.begin(9600);                   //Initialize a serial communication with baud rate 9600
+        //Set cursor at first character/coloumn of first line/row
+        lcd.setCursor(0,1);                   
+        //Print the message as metioned cursor location
+        lcd.print("Triggering SMS....");        
+        //Initialize a serial communication with baud rate 9600
+        Serial.begin(9600);                   
         delay(1000);
-        Serial.println("AT+CMGF=1");          //Initialize the GSM modem
+        //Initialize the GSM modem
+        Serial.println("AT+CMGF=1");          
         delay(2000);
-        Serial.print("AT+CMGS=\"");           //Send dial a phone AT command
-        Serial.print(PhoneNo);                //Send SMS receiver's phone number
-        Serial.write(0x22);                   //Hex code equivalent to "
-        Serial.write(0x0D);                   //Hex code equivalent to carraige return i.e. \r
-        Serial.write(0x0A);                   //Hex code equivalent to new line char i.e. \n
+        //Send dial a phone AT command
+        Serial.print("AT+CMGS=\"");           
+        //Send SMS receiver's phone number
+        Serial.print(PhoneNo);                
+        //Hex code equivalent to "
+        Serial.write(0x22);                   
+        //Hex code equivalent to carraige return i.e. \r
+        Serial.write(0x0D);                   
+        //Hex code equivalent to new line char i.e. \n
+        Serial.write(0x0A);                   
         delay(2000);
         
         Serial.print("Tracked Location is: https://www.google.com/maps/search/?api=1&query="); //Test SMS Message Body to Send
@@ -111,9 +134,10 @@ void loop()
 
 void GetLocation()
 {
-   Serial.print("AT+CGNSINF\r\n");                   // OPERATOR
-      
-      if (Serial.find("+CGNSINF: "))                    // find operator name between two double quotes
+   // OPERATOR
+   Serial.print("AT+CGNSINF\r\n");                   
+   // find operator name between two double quotes
+      if (Serial.find("+CGNSINF: "))                    
           serialResponse = Serial.readStringUntil('\r\n');
           cnt=0;
           char buf[sizeof(Input)];
@@ -129,12 +153,15 @@ void GetLocation()
              }
 
           lcd.clear();
-          lcd.setCursor(0,0);                   //Set cursor at first character/coloumn of first line/row
+          //Set cursor at first character/coloumn of first line/row
+          lcd.setCursor(0,0);                   
           lcd.print("Lon:");
-          lcd.print(arr[3]);                    //Print the message as metioned cursor location
-
-          lcd.setCursor(0,1);                   //Set cursor at first character/coloumn of first line/row
+          //Print the message as metioned cursor location
+          lcd.print(arr[3]);                    
+          //Set cursor at first character/coloumn of first line/row
+          lcd.setCursor(0,1);                   
           lcd.print("Lat:");
-          lcd.print(arr[4]);                    //Print the message as metioned cursor location
+          //Print the message as metioned cursor location
+          lcd.print(arr[4]);                    
       }  
 }

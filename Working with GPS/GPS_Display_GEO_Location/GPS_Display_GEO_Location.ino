@@ -5,11 +5,9 @@
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(11, 12, 14, 15, 16, 17);  
 
-float Input[200];
-float Longitude[100];
-float Latitude[100];
-float long1 = 11.0;
-float lat1 = 50.0;
+char Input[200];
+char Longitude[100];
+char Latitude[100];
 
 String serialResponse = "";
 String arr[22];
@@ -103,13 +101,4 @@ void GetLocation()
           //Print the message as metioned cursor location
           lcd.print(arr[4]);                    
       }  
-      float X = ((Longitude - long1) * 24901 * cos(lat1)) / 360.0
-      float Y = ((Latitude - lat1) * 24860) / 360.0
-      float X2 = X * X;
-      float Y2 = Y * Y;
-      float Distance = sqrt(X2 + Y2);
-      lcd.setCursor(0,0);
-      lcd.print("Distance Calculated");
-      lcd.setCursor(0,1);
-      lcd.print(Distance);
 }
