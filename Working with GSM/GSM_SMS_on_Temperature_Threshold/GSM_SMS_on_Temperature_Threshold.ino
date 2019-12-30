@@ -10,7 +10,7 @@ SimpleDHT11 dht11;
 
 
 LiquidCrystal lcd(11, 12, 14, 15, 16, 17);  
-char PhoneNo[]="+918976260275";
+char PhoneNo[]="+918369241626";
 int sendStatus=0;
 
 void setup() 
@@ -69,7 +69,7 @@ void loop()
       
     delay(500);
 
-    if ((int)temperature>=22)
+    if ((int)temperature>23)
     {
       if(sendStatus==0)
       {
