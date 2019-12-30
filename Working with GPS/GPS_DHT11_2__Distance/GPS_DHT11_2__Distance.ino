@@ -15,7 +15,7 @@ String arr[22];
 
 float Lon1=79.047274;
 float Lat1=21.121621;
-float Lon2=79.045697;
+float Lon2=79.041738;
 float Lat2=21.113453;
 
 // In Kilometers
@@ -145,7 +145,7 @@ void GetLocation()
 
            delay(1000);
 
-      if ((int)temperature>=23)
+      if ((int)temperature>=25)
       {
       if(sendStatus==0)
 
