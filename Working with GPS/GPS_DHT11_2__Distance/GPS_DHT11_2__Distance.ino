@@ -16,7 +16,7 @@ String arr[22];
 float Lon1=79.047274;
 float Lat1=21.121621;
 float Lon2=79.041738;
-float Lat2=21.113453;
+float Lat2=21.131176;
 
 // In Kilometers
 float radius_of_earth = 6378.1;
