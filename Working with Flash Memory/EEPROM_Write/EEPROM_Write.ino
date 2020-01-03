@@ -4,8 +4,9 @@
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(11,12, 14, 15, 16, 17);
 // declaring Potentiometer interface pins and input variable
-int pot = A4;
-int counter;
+int i;
+int j;
+//char counter;
 void setup()
 {
 // set up the LCD's number of columns and rows:
@@ -14,13 +15,23 @@ lcd.setCursor(0,0);
 lcd.print("EEPROM Write");
 lcd.setCursor(0,1);
 lcd.print("EEPROM: ");
-lcd.print(analogRead(pot));
-
 //lcd.clear();
 // accept potentiometer input
-pinMode(pot, INPUT);
-counter = analogRead(pot);
-EEPROM.write(0,counter);
+//pinMode(pot, INPUT);
+//counter = i;
+lcd.clear();
+for(i=0;i<=33;i++)
+{
+    EEPROM.write(i,i+5);
+    lcd.setCursor(0,0);
+    lcd.print("Address :");
+    lcd.print(i);
+    lcd.setCursor(0,1);
+    lcd.print("Value :");
+    lcd.print(i+5);
+    delay(1000);
+  
+}
 }
 void loop()
 {
