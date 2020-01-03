@@ -4,9 +4,10 @@
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(11,12, 14, 15, 16, 17);
 // declaring Potentiometer interface pins and input variable
-int i;
-int j;
+//int i;
+//int j;
 //char counter;
+String data = "Iomatic";
 void setup()
 {
 // set up the LCD's number of columns and rows:
@@ -20,19 +21,19 @@ lcd.print("EEPROM: ");
 //pinMode(pot, INPUT);
 //counter = i;
 lcd.clear();
-for(i=0;i<=33;i++)
-{
-    EEPROM.write(i,i+5);
+//for(i=0;i<33;i++)
+//{
+    EEPROM.write(0,data);
     lcd.setCursor(0,0);
-    lcd.print("Address :");
+//    lcd.print("Address :");
     lcd.print(i);
     lcd.setCursor(0,1);
-    lcd.print("Value :");
-    lcd.print(i+5);
-    delay(1000);
+//    lcd.print("Value :");
+    lcd.print(data);
+    delay(500);
   
-}
-}
+//}
+//}
 void loop()
 {
  

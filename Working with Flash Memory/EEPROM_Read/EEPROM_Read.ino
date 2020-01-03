@@ -16,7 +16,7 @@ lcd.print("EEPROM Read");
 delay(1000);
 lcd.clear();
 int value;
-for(i=0;i<=33;i++)
+for(i=0;i<33;i++)
 {
   
     value = EEPROM.read(i);
@@ -27,7 +27,7 @@ for(i=0;i<=33;i++)
     lcd.print("Value :");
     lcd.print(value);
     lcd.setCursor(0,1);
-    delay(1000);
+    delay(500);
   
 }
 //lcd.setCursor(0,1);
