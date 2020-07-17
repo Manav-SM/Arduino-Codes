@@ -7,7 +7,8 @@ SimpleDHT11 dht11;
 
 LiquidCrystal lcd(11, 12, 14, 15, 16, 17);  // initialize the library with the numbers of the interface pins
 
-char PhoneNo[]="+918976260275";
+// Phone number with country code like +915555555555
+char PhoneNo[]="";
 int sendStatus=0;
 char Caller_name[13] = "";
 

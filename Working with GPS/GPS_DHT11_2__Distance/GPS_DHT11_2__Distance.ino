@@ -23,8 +23,9 @@ float radius_of_earth = 6378.1;
 
 int cnt=0;
 
-char PhoneNo[]="+918976260275";
-char PhoneNo2[]="+918361241626";
+// Phone number with country code like +915555555555
+char PhoneNo[]="";
+char PhoneNo2[]="";
 int sendStatus=0;
 
 void setup()

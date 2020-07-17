@@ -10,7 +10,9 @@ SimpleDHT11 dht11;
 
 
 LiquidCrystal lcd(11, 12, 14, 15, 16, 17);  
-char PhoneNo[]="+918369241626";
+
+// Phone number with country code like +915555555555
+char PhoneNo[]="";
 int sendStatus=0;
 
 void setup() 

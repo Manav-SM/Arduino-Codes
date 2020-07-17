@@ -3,7 +3,6 @@
 
 LiquidCrystal lcd(11,12,14,15,16,17);  // initialize the library with the numbers of the interface pins
 
-//char PhoneNo[]="+98976260275";
 int DialStatus=0;
 
 
