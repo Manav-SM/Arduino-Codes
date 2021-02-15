@@ -1,2 +1,4 @@
 # Arduino Codes
- Code snippets of arduino board functionalities
+ Codebase of arduino board functionalities
+ 
+ 
