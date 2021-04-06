@@ -1,6 +1,10 @@
 # Arduino Codes
- Codebase of arduino board functionalities
- 
+Codebase of arduino board functionalities
+
+### Here are two examples.
+
+You need an <a href="http://iomatic.in/IomaTic/index.html" target="_blank" rel="noopener noreferrer" >Iomatic Arduino Board</a> to run it.
+
  ### Program to use the GSM module.
  
 <p style="text-align: justify">
